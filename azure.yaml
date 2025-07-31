@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/weikanglim/azure-dev/06fa759b68654af7d732f698f82429dbef4ce3ae/schemas/v1.0/azure.yaml.json
+name: functions-quickstart-dotnet-azd-eventgrid-blob
+metadata:
+    template: functions-quickstart-dotnet-azd-eventgrid-blob@0.0.1
+# Post-deployment hooks removed - Event Grid subscription is now created via Bicep infrastructure
+# See infra/eventgrid/subscription.bicep for the replacement implementation
+workflows:
+  up:
+    steps:
+      - azd: provision
+      - azd: deploy
+      - azd: provision eventgrid
+infra:
+  stages:
+  - name: eventgrid
+    path: ./infra/eventgrid
+services:
+  processor:
+    project: ./src/
+    language: dotnet
+    host: function

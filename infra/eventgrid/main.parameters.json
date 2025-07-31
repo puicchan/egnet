@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": {
+      "value": "${RESOURCE_GROUP}"
+    },
+    "functionAppName": {
+      "value": "${AZURE_FUNCTION_APP_NAME}"
+    },
+    "systemTopicName": {
+      "value": "${UNPROCESSED_PDF_SYSTEM_TOPIC_NAME}"
+    },
+    "unprocessedContainerName": {
+      "value": "unprocessed-pdf"
+    },
+    "eventSubscriptionName": {
+      "value": "unprocessed-pdf-topic-subscription"
+    }
+  }
+}
